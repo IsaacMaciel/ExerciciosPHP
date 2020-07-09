@@ -2,10 +2,16 @@
 
 class Conta
 {
-    public string $cpfTitular;
-    public string $nomeTitular;
-    public float $saldo = 0;
-    public string $contaTransferencia;
+    private $titular;
+    private $saldo;
+    static $numeroContas;
+
+    public function __construct(Titular $titular)
+    {
+        $this->titular = $titular;
+        $this->saldo = 0;
+        self::$numeroContas++;
+    }
 
 
     public function sacar($valorSaque): void
@@ -38,4 +44,23 @@ class Conta
         $contaDestino->depositar($valor);
         $contaDestino->contaTransferencia = $this->nomeTitular;
     }
+
+    public function recuperaNomeTitular(): string 
+    {
+        return $this->titular->pegaNome();
+    }
+
+    public function recuperaCpfTitular(): string 
+    {
+        return $this->titular->pegaCpf();
+    }
+
+    public function recuperarSaldo(): float {
+        return $this->saldo;
+    }
+
+    public static function pegarNumeroContas(): int {
+        return self::$numeroContas;
+    }
+
 }
