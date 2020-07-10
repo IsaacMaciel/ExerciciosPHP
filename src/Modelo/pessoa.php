@@ -1,8 +1,9 @@
 <?php
+namespace Alura\Banco\Modelo;
 
 class Pessoa {
-    public $nome;
-    public $cpf;
+    protected $nome;
+    protected $cpf;
 
     public function __construct(string $nome, CPF $cpf)
     {
@@ -18,7 +19,7 @@ class Pessoa {
         return $this->cpf->recuperaNumero();
     }
 
-    public function validaNome($nome): void {
+    protected function validaNome($nome): void {
         if (strlen($nome) < 5) {
             echo "O nome informado foi $nome" . PHP_EOL;
             echo "Favor, informar um nome com mais de 5 caracteres";

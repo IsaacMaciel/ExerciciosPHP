@@ -1,8 +1,13 @@
 <?php
 
+
 require_once 'conta.php';
 require_once 'titular.php';
 require_once 'endereco.php';
+
+use Modelo\Endereco;
+use Titular;
+use Modelo\Conta\Conta;
 
 $endereco = new Endereco('Recife','BV/Boa Viagem','Rua qualquer','111');
 

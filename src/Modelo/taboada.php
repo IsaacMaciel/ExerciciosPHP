@@ -1,4 +1,5 @@
 <?php
+namespace Alura\Banco\Modelo;
 
 for ($y = 0; $y <= 9; $y++) {
     $numero = $y + 1;
