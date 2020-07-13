@@ -11,12 +11,12 @@ class Pessoa {
         $this->cpf = $cpf;
     }
 
-    public function recuperaNome():string {
+    public function pegaNome():string {
         return $this->nome;
     }
 
-    public function recuperaCpf(): string {
-        return $this->cpf->recuperaNumero();
+    public function pegaCpf(): string {
+        return $this->cpf->pegaNumero();
     }
 
     protected function validaNome($nome): void {

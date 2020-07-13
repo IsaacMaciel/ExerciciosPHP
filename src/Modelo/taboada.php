@@ -11,4 +11,3 @@ for ($y = 0; $y <= 9; $y++) {
         echo "$numero X $i == $result" . PHP_EOL;
     }
 }
-

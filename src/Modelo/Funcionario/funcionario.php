@@ -3,34 +3,36 @@ namespace Alura\Banco\Modelo\Funcionario;
 
 use Alura\Banco\Modelo\CPF;
 use Alura\Banco\Modelo\Pessoa;
+use Alura\Banco\Modelo\Property;
 
-  class Funcionario extends Pessoa {
-    private $cargo;
+abstract class Funcionario extends Pessoa {
+     use Property;
+    private $salario;
 
-    public function __construct(string $nome, string $cargo, CPF $cpf, float $salario)
+    public function __construct(string $nome, CPF $cpf, float $salario)
     {      
-        $this->cargo = $cargo;
         $this->salario = $salario;
         parent::__construct($nome,$cpf);        
     }
 
-    public function peganCargo(): string {
-        return $this->cargo;
-    }
-
-    public function setCargo($cargo): void {
-        $this->cargo = $cargo;
-    }
-
-    public function alteraNome($nome): void {
+    public function setaNome($nome): void {
         $this->validaNome($nome);
+    }
+
+    public function recebeAumento(float $valorAumento): void {
+        if ($valorAumento < 0) {
+            echo "Aumento deve ser positivo";
+            return;
+        }
+
+        $this->salario += $valorAumento; 
     }
 
     public function pegaSalario(): float {
         return $this->salario;
     }
 
-    public function calculaBonificacao(): float {
-        return 0.1;
-    }
+    abstract public function calculaBonificacao(): float;
+
+    _
 }

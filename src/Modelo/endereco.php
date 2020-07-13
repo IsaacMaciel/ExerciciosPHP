@@ -1,7 +1,16 @@
 <?php
 namespace Alura\Banco\Modelo;
 
-class Endereco {
+/**
+ *@property-read string $cidade
+ *@property-read string $bairro
+ *@property-read string $rua
+ *@property-read string $cidade
+ */
+
+class Endereco
+{
+    use Property;
     private $cidade;
     private $bairro;
     private $rua;
@@ -15,29 +24,42 @@ class Endereco {
         $this->numero = $numero;
     }
 
-    public function pegaCidade(): string {
+    public function pegaCidade(): string
+    {
         return $this->cidade;
     }
-    public function pegaBairro(): string {
+    public function pegaBairro(): string
+    {
         return $this->bairro;
     }
-    public function pegaRua(): string {
+    public function pegaRua(): string
+    {
         return $this->rua;
     }
-    public function pegaNumero(): string {
+    public function pegaNumero(): string
+    {
         return $this->numero;
     }
-    public function setaCidade(string $cidade): void {
+    public function setaCidade(string $cidade): void
+    {
         $this->cidade = $cidade;
     }
-    public function setaBairro(string $bairro): void {
+    public function setaBairro(string $bairro): void
+    {
         $this->bairro = $bairro;
     }
-    public function setaRua(string $rua): void {
+    public function setaRua(string $rua): void
+    {
         $this->rua = $rua;
     }
-    public function setaNumero(string $numero): void {
+    public function setaNumero(string $numero): void
+    {
         $this->numero = $numero;
+    }
+    public function __toString(): string
+    {
+
+        return "Rua: {$this->rua}, Numero: {$this->numero}, Bairro: {$this->bairro}, Cidade: {$this->cidade}";
     }
 
 }

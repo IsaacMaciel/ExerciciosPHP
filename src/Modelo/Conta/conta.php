@@ -1,12 +1,15 @@
 <?php
 namespace Alura\Banco\Modelo\Conta;
 
+use Alura\Banco\Modelo\Property;
+
 abstract class Conta
 {
+    use Property;
     private $titular;
     private $saldo;
     static $numeroContas;
-    
+
     public function __construct(Titular $titular)
     {
         $this->titular = $titular;
@@ -14,7 +17,7 @@ abstract class Conta
         self::$numeroContas++;
     }
     public function sacar(float $saque): void
-    {   
+    {
         $tarifa = $saque * $this->percentualTarifa();
         $valorASacar = $saque + $tarifa;
         if ($valorASacar > $this->saldo) {
@@ -23,7 +26,7 @@ abstract class Conta
         }
         $this->saldo -= $valorASacar;
     }
-    public function depositar( float $valorDeposito): void
+    public function depositar(float $valorDeposito): void
     {
         if ($valorDeposito < 0) {
             echo "O valor precisa ser positivo";
@@ -31,13 +34,15 @@ abstract class Conta
         }
         $this->saldo += $valorDeposito;
     }
-    public function recuperarSaldo(): float {
+    public function pegaSaldo(): float
+    {
         return $this->saldo;
     }
 
-    public static function pegarNumeroContas(): int {
+    public static function pegaNumeroContas(): int
+    {
         return self::$numeroContas;
     }
-    abstract  protected function percentualTarifa(): float;
+    abstract protected function percentualTarifa(): float;
 
 }

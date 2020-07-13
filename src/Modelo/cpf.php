@@ -1,7 +1,8 @@
 <?php
 namespace Alura\Banco\Modelo;
 
-class CPF {
+class CPF
+{
     private $cpf;
 
     public function __construct($cpf)
@@ -9,8 +10,9 @@ class CPF {
         $this->cpf = $cpf;
     }
 
-    public function recuperaNumero(): string {
-        return $this->cpf;
+    public function pegaNumero(): string
+    {
+        return $this->
     }
 
 }
